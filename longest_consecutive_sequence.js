@@ -16,7 +16,7 @@ function longestConsecutive(numbers_input) {
     let current_sequence = 0
     let longest_sequence = 1
     let in_sequence = false
-    for (const number in numbers_map.keys()) {
+    for (const number of numbers_map.keys()) {
         if (numbers_map.get(number - 1) === true) {
             continue
         }
