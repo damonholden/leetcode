@@ -1,5 +1,5 @@
-/*
- * @param {number[]} nums
+/** 
+ * @param {number[]} numbers_imput
  * @return {number}
  */
 function longestConsecutive(numbers_input) {
@@ -7,25 +7,24 @@ function longestConsecutive(numbers_input) {
         return numbers_input.length
     }
 
-    const numbers_map = {}
+    const numbers_map = new Map()
 
     for (const number of numbers_input) {
-        numbers_map[number] = true
+        numbers_map.set(number, true)
     }
 
-    const visited = []
     let current_sequence = 0
     let longest_sequence = 1
     let in_sequence = false
-    for (const number of Object.keys(numbers_map).map(Number)) {
-        if (numbers_map[number - 1] === true) {
+    for (const number in numbers_map.keys()) {
+        if (numbers_map.get(number - 1) === true) {
             continue
         }
 
         let sequence_value = number + 1
         do {
             ++current_sequence
-            in_sequence = numbers_map[sequence_value++]
+            in_sequence = numbers_map.get(sequence_value++)
         } while (in_sequence === true)
 
         if (current_sequence > longest_sequence) {
